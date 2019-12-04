@@ -18,10 +18,10 @@ You can run the `install.sh` script as root/with sudo or if you prefer manually:
  2.   vi /etc/pam.d/login  (if applicable)
       # session optional pam_motd.so
 
- 3.   vi /etc/profile.d/dynmotd.sh (mode: 0644)
+ 3.   vi /etc/profile.d/dynmotd.sh (chmod: 644)
       /usr/local/bin/dynmotd
 
- 4.   Then of course drop this file in:
+ 4.   Then of course drop this file in (chmod 755):
       /usr/local/bin/
 
  5.   Create an optional folder (default: /etc/dynmotd.d) in which you can place custom scripts for checking additional items (file system, services, ports, etc. -- this is optional)
