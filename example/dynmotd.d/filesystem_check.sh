@@ -1,9 +1,20 @@
-#file systems
-ROOT_LV=$(df -Ph | grep " /$" | awk '{print $4,"-",$5}' | tr -d '\n')
-OPT_LV=$(df -Ph | grep " /opt$" | awk '{print $4,"-",$5}' | tr -d '\n')
-VARLOG_LV=$(df -Ph | grep " /var/log$" | awk '{print $4,"-",$5}' | tr -d '\n')
+# mounts
 
-echo -e "===== FILESYSTEM =============================================================
- $COLOR_COLUMN- /$RESET_COLORS..................: $COLOR_VALUE ${ROOT_LV} (avail-use%) $RESET_COLORS
- $COLOR_COLUMN- /opt$RESET_COLORS...............: $COLOR_VALUE ${OPT_LV} (avail-use%) $RESET_COLORS
- $COLOR_COLUMN- /var/log$RESET_COLORS...........: $COLOR_VALUE ${VARLOG_LV} (avail-use%) $RESET_COLORS"
+############ add mount points to this array #
+declare -a MOUNTS=("/" "/opt" "/var" "/home")
+#############################################
+
+function dots {
+        # $1 is mount string
+        let DOTNUM=19-${#1}
+        DOTSTR=$(printf '%.0s.' $(seq $DOTNUM))
+}
+
+echo "===== Mounts ================================================================="
+
+for MOUNT in "${MOUNTS[@]}"
+do
+        dots "$MOUNT"
+        MOUNT_VAL=$(df -Ph | grep "$MOUNT$" | awk '{print $4, "-",$5}' | tr -d '\n')
+        echo -e " $COLOR_COLUMN- $MOUNT$RESET_COLORS$DOTSTR: $COLOR_VALUE ${MOUNT_VAL} (avail-use%) $RESET_COLORS"
+done
