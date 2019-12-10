@@ -1,11 +1,12 @@
 # dynmotd
 
-### [CHANGELOG](https://github.com/Neutrollized/dynmotd/blob/master/CHANGELOG.md)
+### [CHANGELOG](https://github.com/nyokinyoki/dynmotd/blob/master/CHANGELOG.md)
 
 Dynamic MOTD for RHEL/Debian-based Linux distros
 
-I got the template for this off someone's repo many years ago, long before I got a GitHub account.  It was initially created for RHEL6, but I've made changes to it for RHEL7 as well as added my own banner on top.  I tried looking for the original so I could do a proper fork and give credit where credit is due, but there are now so many dynmotd repos on GitHub that it's honestly hard to figure out who I got it from.  In any case, you have my thanks and here's a *hat tip* to you, stranger.
+This is a forked project [Neutrollized/dynmotd](https://github.com/Neutrollized/dynmotd).
 
+I've added support for Oracle Linux and automatic mountpoint parsing. I might consolidate it back to just one script, to make deployments easier.
 
 ## Installation:
 
@@ -48,5 +49,8 @@ You can run the `install.sh` script as root/with sudo or if you prefer manually:
 ===== SERVICES ===============================================================
  -- docker.............:  active (running) since Sat 2019-07-20 02:08:09 UTC
  -- jenkins............:  active (exited) since Sat 2019-07-20 02:08:09 UTC
+===== Mounts =================================================================
+ -- /..................:  187G - 3% (avail-use%) 
+ -- /boot..............:  278M - 39% (avail-use%) 
 ==============================================================================
 ```
