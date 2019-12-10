@@ -1,9 +1,5 @@
 # mounts
 
-############ add mount points to this array #
-declare -a MOUNTS=("/" "/opt" "/var" "/home")
-#############################################
-
 function dots {
         # $1 is mount string
         let DOTNUM=19-${#1}
@@ -11,8 +7,7 @@ function dots {
 }
 
 echo "===== Mounts ================================================================="
-
-for MOUNT in "${MOUNTS[@]}"
+df | grep ^/dev | tr -s " " | cut -d " " -f 6 | while read -r MOUNT
 do
         dots "$MOUNT"
         MOUNT_VAL=$(df -Ph | grep "$MOUNT$" | awk '{print $4, "-",$5}' | tr -d '\n')
